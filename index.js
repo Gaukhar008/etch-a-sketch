@@ -30,4 +30,23 @@ function createGrid(rows, columns) {
     document.querySelectorAll('.grid-item').forEach(cell => cell.addEventListener('mouseover', (e) => { 
     e.target.style.backgroundColor = 'black'}))
 }
+
+resetButton.addEventListener("click", updateGrid);
+
+function updateGrid () {
+let input = prompt("Write the size of grid you want:");
+grid.innerHTML = "";
+grid.style.setProperty(
+    "grid-template-columns",
+    `repeat(${input}, 2fr)`
+  );
+  grid.style.setProperty(
+    "grid-template-rows",
+    `repeat(${input}, 2fr)`
+  );
+    if (input > 0 && input <= 100) {
+    createGrid(input, input);
+    } 
+}
+
 createGrid(16, 16);
